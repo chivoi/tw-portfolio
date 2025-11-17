@@ -47,10 +47,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -84,10 +80,6 @@ const config = {
       },
       navbar: {
         title: 'Ana Lastoviria',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
         items: [
           {to: '/', label: 'About', position: 'left'},
           {
@@ -157,7 +149,8 @@ const config = {
       },
       prism: {
         theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        darkTheme: prismThemes.nightOwl,
+        additionalLanguages: ['ruby'],
       },
     }),
 };

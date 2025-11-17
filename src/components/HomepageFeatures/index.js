@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import { Heading }from '@theme/Heading';
 import styles from './styles.module.css';
 
 const FeatureList = [
   {
     title: 'About me',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: '',
     description: (
       <>
             <p>👋 I'm Ana, a US-based developer and tech writer. This is the photo of me at the Arnold Schwarzenegger museum in Thal, Austria.</p>

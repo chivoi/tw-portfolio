@@ -2,46 +2,23 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+:::info
+  This a set of docs inspired by [Roster Rosie](https://github.com/chivoi/roster-rosie), a little bot I built with a teammate for a lab day at work. It was created as a portfolio piece and written with no AI help, so there are quirks. I choose to let them be  so you get the idea of how my brain and language work without tech enhancement.
+:::
 
-## Getting Started
+> *"Who's running standup today? Any volunteers?.. [crickets]"*
 
-Get started by **creating a new site**.
+> *"Anyone remember who's driving the retro today? Let's have a look at the roster... [painfully long pause]... Does anyone have a link to the roster handy? I can't seem to locate it..."*
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+If the beginning of every Scrum meeting in your team sounds like this, then you are in the right place. Roster Rosie is a Slack assistant bot that saves your team members time (and awkwardness!), by telling you who the scrum leader is exactly when you need it.
 
-### What you'll need
+Here is what she can do:
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- List all team members
+- Report on the current / next lead for standup or retrospective
+- Rotate the current lead of the event to the next person on the roster
+- Inform your team about who is on duty via Slack message
 
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+If you would like to experiment, here is a [Postman collection](https://www.postman.com/chivoi/roster-rosie/collection/9m5cl9c/roster-rosie-request-examples?action=share&creator=14131077) with sample requests for all available endpoints.
