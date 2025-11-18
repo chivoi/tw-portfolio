@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'chivoi', // Usually your GitHub org/user name.
+  projectName: 'tw-portfolio', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -49,15 +49,15 @@ const config = {
           sidebarPath: './sidebars.js',
         },
         blog: {
+          blogTitle: 'Guide examples',
+          blogDescription: 'Examples of Guide and How-to writing',
+          blogSidebarTitle: 'All guides',
+          routeBasePath: 'guides',
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
-            xslt: true,
+            // xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -88,7 +88,7 @@ const config = {
             position: 'left',
             label: 'API docs example',
           },
-          {to: '/blog', label: 'How-to examples', position: 'left'},
+          {to: '/guides', label: 'How-to examples', position: 'left'},
           {
             href: 'https://github.com/chivoi',
             label: 'GitHub',
@@ -118,7 +118,7 @@ const config = {
               },
               {
                 label: 'Guides & How-tos',
-                to: '/blog',
+                to: '/guides',
               },
             ],
           },
@@ -146,6 +146,11 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Ana Lastoviria. Built with Docusaurus.`,
+      },
+      blog: {
+        sidebar: {
+          groupByYear: false,
+        },
       },
       prism: {
         theme: prismThemes.github,

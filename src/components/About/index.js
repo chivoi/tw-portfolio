@@ -1,5 +1,4 @@
 import styles from './styles.module.css';
-import photo from '../../../static/img/ana.jpeg'
 
 export default function About(){
   return (
@@ -12,9 +11,6 @@ export default function About(){
 function AboutCard() {
   return (
     <div className="container">
-      <div className="text--center">
-        <img src={photo} className={styles.aboutImg} />
-      </div>
       <div className="text--left padding-horiz--md">
         <h3 className='text--center'>About me</h3>
             <p>👋 I'm Ana, a US-based tech writer and developer. This is the photo of me at the Arnold Schwarzenegger museum in Thal, Austria.</p>
