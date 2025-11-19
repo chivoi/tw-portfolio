@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunktw_portfolio=globalThis.webpackChunktw_portfolio||[]).push([[784],{4002:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/guides","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Examples of Guide and How-to writing","blogTitle":"Guides"}}')}}]);
