@@ -11,7 +11,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Ana Lastoviria',
-  tagline: 'Technical Writer',
+  tagline: 'A Technical Communicator',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -49,7 +49,7 @@ const config = {
           sidebarPath: './sidebars.js',
         },
         blog: {
-          blogTitle: 'Guide examples',
+          blogTitle: 'Guides',
           blogDescription: 'Examples of Guide and How-to writing',
           blogSidebarTitle: 'All guides',
           routeBasePath: 'guides',
@@ -80,15 +80,19 @@ const config = {
       },
       navbar: {
         title: 'Ana Lastoviria',
+        logo: {
+          alt: 'The logo: letters A and L',
+          src: 'img/logo.svg'
+        },
         items: [
           {to: '/', label: 'About', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'API docs example',
+            label: 'API docs',
           },
-          {to: '/guides', label: 'How-to examples', position: 'left'},
+          {to: '/guides', label: 'Guides & How-tos', position: 'left'},
           {
             href: 'https://github.com/chivoi',
             label: 'GitHub',
