@@ -30,7 +30,6 @@ const config = {
   organizationName: 'chivoi', // Usually your GitHub org/user name.
   projectName: 'tw-portfolio', // Usually your repo name.
   trailingSlash: false,
-  deploymentBranch: 'main',
 
   onBrokenLinks: 'throw',
 
