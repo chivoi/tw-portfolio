@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout
       title={`Home`}
-      description={`A portfolio of ${siteConfig.title}, ${siteConfig.tagline}`}>
+      description={`${siteConfig.title}, ${siteConfig.tagline}`}>
       <HomepageHeader />
       <main>
         <About />

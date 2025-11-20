@@ -5,7 +5,7 @@ sidebar_position: 1
 # Overview
 
 :::info
-  This a set of docs inspired by [Roster Rosie](https://github.com/chivoi/roster-rosie), a little bot I built with a teammate for a lab day at work. The decs were created as a portfolio piece and written with no AI help, so there are quirks. I choose to let them be so you get the idea of how my brain and language work without tech enhancement.
+  This a set of docs inspired by [Roster Rosie](https://github.com/chivoi/roster-rosie), a little bot I built with a teammate for a lab day at work. The docs were created as a portfolio piece and written with no AI help, so there are quirks. I choose to let them be so you get the idea of how my brain and language work without tech enhancement.
 :::
 
 > *"Who's running standup today? Any volunteers?.. [crickets]"*
