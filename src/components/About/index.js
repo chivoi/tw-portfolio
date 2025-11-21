@@ -17,7 +17,7 @@ function AboutCard() {
 
           <p>My favourite things in the whole world are clarity, knowledge-sharing and making sense of complex things. I seek those in everything I do, be it doc-writing, coding or interacting with fellow human beings.</p>
 
-          <p>I'm also a big DEI advocate, committed to bringing positive change to the future and increasing diversity and inclusivity in tech. To promote this and give back to my community, I volunteered as a site council representative on the ANZ site council at Zendesk. I really enjoy creating a nurturing and inclusive environment in my workplace.</p>
+          <p>I'm also a big company culture and belonging advocate. In my latest full time role I gave back to the community by volunteering as a representative on the ANZ site council. I really enjoy creating nurturing environments wherever I find myself.</p>
 
           <p>In my free time I like to write music, paint boardgame miniatures or hang out with my cat Borsch. When the weather is nice, I like to get out of town for a hike.</p>
 
