@@ -1,0 +1,108 @@
+---
+slug: prometheus-readme-edit
+title: Prometheus: Expansion and Edit of an Academic Software Documentation
+tags: [editing, developer docs, end-user docs]
+---
+
+In December 2025 I joined Prometheus, an open-source simulation software ... <!-- TODO --> as a technical writer and editor.
+<!-- truncate -->
+
+The primary documentation issues of this project were these:
+
+1. Developer team is small and has no time for writing or structuring their docs. Moreover, different people authored different sections of the current docs, making writing inconsistent and sometimes incoherent.
+
+2. The project is created by people of identical backgrounds, so a lot of assumtions are made in the writing. For example, a professor would usually have a sufficient coding skillset for a phrase like *"Change the arch version in the makefile"* to make complete sense, whereas for a student this would be gibberish, gatekeeping them from using the software completely.
+
+Below, I'll post several edited sections from Prometheus docs as an example of my editing work. If you would like to see the "before" and "after" versions of a full doc, you can have a look at the [pull request](https://github.com/Harvard-Neutrino/prometheus/pull/49) I made to the project repo for these changes. Read the [PR description](https://github.com/Harvard-Neutrino/prometheus/pull/49#issue-3707926348) for the summary of changes, or see the complete edits [in the diff view](https://github.com/Harvard-Neutrino/prometheus/pull/49/changes#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5).
+
+---
+
+## Document structure
+
+**Before**
+
+```text
+- Introduction
+- Dependencies
+- Installation
+  - Installation from source
+  - Using Containers
+- Citation
+- Documentation
+```
+
+**After**
+
+```text
+- Introduction
+  - Authors
+  - Terms of Use
+- Getting started
+- Installation
+  - Install from Source
+    - Prerequisites
+    - Compilation
+  - Install with Containers
+    - Using Docker
+    - GPU support for Docker
+    - Using Singularity
+    - Source the Environment File
+- Running Simulations 
+- Citation
+- API Documentation
+- Getting Help
+
+```
+
+**Motivation**
+
+The document structure used to be chunky, with large sections containing all sorts of different information. It was also biased, for example the `Dependencies` section right after `Introduction` may appear confusing for the beginner.
+
+In the "After" example, I made the structure more modular: the sections are now granular, small, each either explains 1 thing or has a sub-structure. The existing sections are reordered for the better information flow (`Intro` --> `Get started` --> `Install`), and the headings are made more descriptive of what sections are about: `API Documentation` instead of generic `Documentation`. The new sections are added for important topics, like `Terms of Use` or `Getting Help`.
+
+## Introduction
+
+**Before**
+
+> Prometheus is a Python-based package for simulating neutrino telescopes. Please see [2304.14526](http://arxiv.org/abs/2304.14526) for a detailed description of the package.
+
+**After**
+
+> Prometheus is a Python-based package for simulating neutrino telescopes. It balances ease of use with performance and supports simulations with arbitrary detector geometries deployed in ice or water.
+>
+> Prometheus simulates neutrino interactions in the volume surrounding the detector, computes the light yield of hadronic showers and the outgoing leptons, propagates photons in the medium, and records their arrival times and positions in user-defined regions. Events are then serialized to Parquet files, a compact and interoperable format that enables efficient access for downstream analysis.
+>
+> For a detailed description of the package, see [arXiv:2304.14526](http://arxiv.org/abs/2304.14526).
+
+**Motivation**
+
+`Introduction` is the first section the potential user lays eyes on. In the "before" example it doesn't really tell us what this software does. In the "after" edit I have expended the section to address that, give a more comrehensive description of the software and added the `arXiv` keyword to the link text to turn the ambiguous number to a clear reference to the paper stored in arXiv archive.
+
+## Using Containers: GPU support
+
+**Before**
+
+><...>
+>
+>For GPU usage the repository offers a GPU docker image, which you will need to use to build an image yourself. Then you will also have to compile ppc (using e.g. make gpu in the PPC_CUDA folder) youself. Note that you may change the arch version in the makefile of PPC to do this, depending on your hardware.
+
+**After**
+
+> **GPU Support with Docker**
+>
+> For GPU-accelerated simulations, you will need to build a custom Docker image from the GPU Dockerfile [provided in the repository](https://github.com/Harvard-Neutrino/prometheus/tree/main/container). After building and starting the image, compile PPC with GPU support by running `make gpu` in the [PPC_CUDA](https://github.com/Harvard-Neutrino/prometheus/tree/main/resources/PPC_executables/PPC_CUDA) directory within the container.
+>
+> >[!NOTE]
+> >You may need to modify the architecture version in the PPC makefile to match your GPU hardware.
+
+**Motivation**
+
+This paragraph was a part of a `Using Containers` section. It was situated after the steps of the Singularity setup.
+
+After the edits, it became a separate section (`GPU Support with Docker`), moved to after a Docker setup. The "before" wording made it difficult to understand the meaning of the step for the end-users, and so was edited for clarity. The edited version also includes links to the resources mentioned in the paragraph, as well as includes a more comprehensive formatting.
+
+The edited version does not include more detail, which was a choice: this setup step is somewhat advanced, and if the end-user needs to perform it, they would be assumed to have a sufficient skillset to understand what Dockerfile is, how to build a Docker image, etc.
+
+---
+
+*If you would like to see the "before" and "after" versions of a full doc, you can have a look at the [pull request](https://github.com/Harvard-Neutrino/prometheus/pull/49) I made to the project repo for these changes. Read the [PR description](https://github.com/Harvard-Neutrino/prometheus/pull/49#issue-3707926348) for the summary of changes, or see the complete edits [in the diff view](https://github.com/Harvard-Neutrino/prometheus/pull/49/changes#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5).*
