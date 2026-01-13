@@ -1,108 +1,304 @@
 ---
-slug: prometheus-readme-edit
-title: Prometheus: Expansion and Edit of an Academic Software Documentation
-tags: [editing, developer docs, end-user docs]
+slug: prometheus-readme
+title: Prometheus - Academic software README
+tags: [product guide, user-facing docs, developer docs, setup guide]
 ---
 
-In December 2025 I joined Prometheus, an open-source simulation software ... <!-- TODO --> as a technical writer and editor.
+In December 2025 I joined Prometheus, an open-source academic software project as a tech writer and editor. This is my initial offering to the project: a README document that includes a software writeup and Getting Started guide.
+
 <!-- truncate -->
 
-The primary documentation issues of this project were these:
+:::note[**Quick facts**]
+**Target Audience**: physics students, PhDs, postdocs, professors.
 
-1. Developer team is small and has no time for writing or structuring their docs. Moreover, different people authored different sections of the current docs, making writing inconsistent and sometimes incoherent.
+**My contribution**: Turned the existing incomplete, unformatted and not user-friendly doc into a clear and comprehensive guide for academics of various seniority levels.
 
-2. The project is created by people of identical backgrounds, so a lot of assumtions are made in the writing. For example, a professor would usually have a sufficient coding skillset for a phrase like *"Change the arch version in the makefile"* to make complete sense, whereas for a student this would be gibberish, gatekeeping them from using the software completely.
+**Challenges**: A complex and unfamiliar topic and processes; Making the guide junior-friendly while keeping it on point for the target audience.
 
-Below, I'll post several edited sections from Prometheus docs as an example of my editing work. If you would like to see the "before" and "after" versions of a full doc, you can have a look at the [pull request](https://github.com/Harvard-Neutrino/prometheus/pull/49) I made to the project repo for these changes. Read the [PR description](https://github.com/Harvard-Neutrino/prometheus/pull/49#issue-3707926348) for the summary of changes, or see the complete edits [in the diff view](https://github.com/Harvard-Neutrino/prometheus/pull/49/changes#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5).
+**References**: I used Daniel D. Beck's [README checklist](https://github.com/ddbeck/readme-checklist/) as a structure help.
+:::
 
----
+The contents of this document are being shared here with the permission of the project owners.
 
-## Document structure
+The original document with all links and resources present is viewable [in Prometheus repository](https://github.com/Harvard-Neutrino/prometheus) on GitHub.
 
-**Before**
+___
 
-```text
-- Introduction
-- Dependencies
-- Installation
-  - Installation from source
-  - Using Containers
-- Citation
-- Documentation
-```
+# Prometheus
 
-**After**
-
-```text
-- Introduction
-  - Authors
-  - Terms of Use
-- Getting started
-- Installation
-  - Install from Source
-    - Prerequisites
-    - Compilation
-  - Install with Containers
-    - Using Docker
-    - GPU support for Docker
-    - Using Singularity
-    - Source the Environment File
-- Running Simulations 
-- Citation
-- API Documentation
-- Getting Help
-
-```
-
-**Motivation**
-
-The document structure used to be chunky, with large sections containing all sorts of different information. It was also biased, for example the `Dependencies` section right after `Introduction` may appear confusing for the beginner.
-
-In the "After" example, I made the structure more modular: the sections are now granular, small, each either explains 1 thing or has a sub-structure. The existing sections are reordered for the better information flow (`Intro` --> `Get started` --> `Install`), and the headings are made more descriptive of what sections are about: `API Documentation` instead of generic `Documentation`. The new sections are added for important topics, like `Terms of Use` or `Getting Help`.
+Welcome to Prometheus, an open-source neutrino telescope simulation.
 
 ## Introduction
 
-**Before**
+Prometheus is a Python-based package for simulating neutrino telescopes. It balances ease of use with performance and supports simulations with arbitrary detector geometries deployed in ice or water.
 
-> Prometheus is a Python-based package for simulating neutrino telescopes. Please see [2304.14526](http://arxiv.org/abs/2304.14526) for a detailed description of the package.
+Prometheus simulates neutrino interactions in the volume surrounding the detector, computes the light yield of hadronic showers and the outgoing leptons, propagates photons in the medium, and records their arrival times and positions in user-defined regions. Events are then serialized to Parquet files, a compact and interoperable format that enables efficient access for downstream analysis.
 
-**After**
+For a detailed description of the package, see [arXiv:2304.14526](http://arxiv.org/abs/2304.14526).
 
-> Prometheus is a Python-based package for simulating neutrino telescopes. It balances ease of use with performance and supports simulations with arbitrary detector geometries deployed in ice or water.
->
-> Prometheus simulates neutrino interactions in the volume surrounding the detector, computes the light yield of hadronic showers and the outgoing leptons, propagates photons in the medium, and records their arrival times and positions in user-defined regions. Events are then serialized to Parquet files, a compact and interoperable format that enables efficient access for downstream analysis.
->
-> For a detailed description of the package, see [arXiv:2304.14526](http://arxiv.org/abs/2304.14526).
+### Authors
 
-**Motivation**
+1. [Jeffrey Lazar](https://inspirehep.net/authors/1771794) 
+2. [Stephan Meighen-Berger](https://inspirehep.net/authors/1828460)
+3. [Christian Haack](https://inspirehep.net/authors/1284379)
+4. [David Kim](https://github.com/david-kim2)
+5. [Santiago Giner](https://inspirehep.net/authors/2847732)
+6. [Carlos Argüelles Delgado](https://inspirehep.net/authors/1074902)
 
-`Introduction` is the first section the potential user lays eyes on. In the "before" example it doesn't really tell us what this software does. In the "after" edit I have expended the section to address that, give a more comrehensive description of the software and added the `arXiv` keyword to the link text to turn the ambiguous number to a clear reference to the paper stored in arXiv archive.
+### Terms of Use
 
-## Using Containers: GPU support
+Prometheus is open-source. You are free to copy, modify, and distribute it with attribution under the terms of the GNU Lesser General Public License. See the LICENSE file for details.
 
-**Before**
+## Getting Started
 
-><...>
->
->For GPU usage the repository offers a GPU docker image, which you will need to use to build an image yourself. Then you will also have to compile ppc (using e.g. make gpu in the PPC_CUDA folder) youself. Note that you may change the arch version in the makefile of PPC to do this, depending on your hardware.
+To work with Prometheus, you will need:
 
-**After**
+- [Python](https://realpython.com/installing-python/) 3.11 or higher
+- [pip](https://pip.pypa.io/en/stable/installation/) for Python package management. It usually comes with installing Python, so you should already have it.
 
-> **GPU Support with Docker**
->
-> For GPU-accelerated simulations, you will need to build a custom Docker image from the GPU Dockerfile [provided in the repository](https://github.com/Harvard-Neutrino/prometheus/tree/main/container). After building and starting the image, compile PPC with GPU support by running `make gpu` in the [PPC_CUDA](https://github.com/Harvard-Neutrino/prometheus/tree/main/resources/PPC_executables/PPC_CUDA) directory within the container.
->
-> >[!NOTE]
-> >You may need to modify the architecture version in the PPC makefile to match your GPU hardware.
+Additional prerequisites depend on your installation method and are detailed in the [Installation](#installation) section below.
 
-**Motivation**
+## Installation
 
-This paragraph was a part of a `Using Containers` section. It was situated after the steps of the Singularity setup.
+There are two options to install Prometheus:
 
-After the edits, it became a separate section (`GPU Support with Docker`), moved to after a Docker setup. The "before" wording made it difficult to understand the meaning of the step for the end-users, and so was edited for clarity. The edited version also includes links to the resources mentioned in the paragraph, as well as includes a more comprehensive formatting.
+- Download and compile dependencies from source/`PyPI`
+- Use provided Docker or Singularity containers with prebuilt dependencies
 
-The edited version does not include more detail, which was a choice: this setup step is somewhat advanced, and if the end-user needs to perform it, they would be assumed to have a sufficient skillset to understand what Dockerfile is, how to build a Docker image, etc.
+### Install from Source
 
----
+If you have Python and pip installed, this would be the most straightforward installation method.
 
-*If you would like to see the "before" and "after" versions of a full doc, you can have a look at the [pull request](https://github.com/Harvard-Neutrino/prometheus/pull/49) I made to the project repo for these changes. Read the [PR description](https://github.com/Harvard-Neutrino/prometheus/pull/49#issue-3707926348) for the summary of changes, or see the complete edits [in the diff view](https://github.com/Harvard-Neutrino/prometheus/pull/49/changes#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5).*
+To start, clone this repository onto your machine:
+
+```sh
+git clone git@github.com:Harvard-Neutrino/prometheus.git
+```
+
+#### Prerequisites
+
+To work with Prometheus, you need to install the following packages:
+
+1. **[LeptonInjector](https://github.com/icecube/LeptonInjector)** - Required for selecting neutrino interaction quantities. Installation instructions are available in the [project repository](https://github.com/icecube/LeptonInjector?tab=readme-ov-file#download-compilation-and-installation).
+
+2. **[PROPOSAL](https://github.com/tudo-astroparticlephysics/PROPOSAL)** - Used to propagate charged leptons resulting from neutrino interactions. PROPOSAL installation is included in the Prometheus setup script, but some users reported issues on certain operating systems. If needed, you can install it separately, following its [installation guide](https://github.com/tudo-astroparticlephysics/PROPOSAL/blob/master/INSTALL.md).
+
+3. **[Photon Propagation Code (PPC)](https://github.com/Harvard-Neutrino/prometheus/tree/main/resources/PPC_executables)** - Required for ice-based detector simulations. Two versions are available:
+    - CPU version ([compilation instructions](https://github.com/Harvard-Neutrino/prometheus/tree/main/resources/PPC_executables/PPC))
+    - GPU/CUDA version ([compilation instructions](https://github.com/Harvard-Neutrino/prometheus/tree/main/resources/PPC_executables/PPC_CUDA)).
+
+    Both of these use a modified version of the official [PPC code](https://github.com/icecube/ppc).
+
+4. **[LeptonWeighter](https://github.com/icecube/LeptonWeighter)** (optional) - Required for event weighting. Installation instructions are available in the [project repository](https://github.com/icecube/LeptonWeighter?tab=readme-ov-file#installation).
+
+#### Compilation
+
+:::info
+The Prometheus setup script is currently under review to ensure its steps are up to date. We are working to make it available as soon as possible.
+:::
+
+After installing the prerequisites, run the setup script from the Prometheus base directory:
+
+```sh
+python3 python -m pip setup.py install
+```
+
+This will install all remaining dependencies needed to run simulations.
+
+:::tip
+If you encounter issues installing PROPOSAL through the setup script, install it separately before running the script. See PROPOSAL's [advanced installation guide](https://github.com/tudo-astroparticlephysics/PROPOSAL/blob/master/INSTALL.md) for instructions.
+:::
+
+### Install with Containers
+
+If you need to run simulations on a computing cluster or the source installation doesn't work for you, Docker and Singularity images with all dependencies prebuilt are available in [this public Google drive folder](https://drive.google.com/drive/folders/1-PbSiZQr0n85g9PrhbHMeURDOA02QUSY?usp=sharing).
+
+:::warning 
+The Docker and Singularity images we provide are not currently compatible with ARM-based system architectures, which causes issues when running them on computers with Mac M-series chips. If you are a Mac user, consider [installing Prometheus from source](#install-from-source).
+:::
+
+#### Using Docker
+
+If you need help getting started with Docker, see the [Docker documentation](https://docs.docker.com/desktop/). Here is the outline of the steps you need to take to set things up:
+
+**1. Load the image**
+
+Download the latest version `.tar.gz` file from the [Google Drive folder](https://drive.google.com/drive/folders/1Ok0czMhOd8S0N73oyPn5B2mFWp_D5gUx), navigate to the directory where you downloaded the file, and run:
+
+```sh
+docker load < prometheus_v_<VERSION>.tar.gz
+```
+
+Replace `<VERSION>` with the actual version number (e.g., `1_0_2`). This will load the image into Docker. To learn more about loading images and available options, refer to the [Docker documentation](https://docs.docker.com/reference/cli/docker/image/load/).
+
+**2. Run the container and launch a shell**
+
+```sh
+docker run -it prometheus_v_<VERSION>:latest sh
+```
+
+For more container running options, refer to the [Docker containers documentation](https://docs.docker.com/engine/containers/run/).
+
+#### GPU Support with Docker
+
+For GPU-accelerated simulations, you will need to build a custom Docker image from the GPU Dockerfile [provided in the repository](https://github.com/Harvard-Neutrino/prometheus/tree/main/container). After building and starting the image, compile PPC with GPU support by running `make gpu` in the [PPC_CUDA](https://github.com/Harvard-Neutrino/prometheus/tree/main/resources/PPC_executables/PPC_CUDA) directory within the container.
+
+:::info
+You may need to modify the architecture version in the PPC makefile to match your GPU hardware.
+:::
+
+#### Using Singularity
+
+If you need help getting started with Singularity, see the [Singularity documentation](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html).
+
+Singularity is particularly useful for running simulations on computing clusters. To use the Singularity container:
+
+**1. Clone this repository**
+
+The Singularity setup is still under construction, and there may be issues running software using only the files in the container. To avoid these issues, clone the repository onto your machine and navigate into the project directory:
+
+```sh
+git clone git@github.com:Harvard-Neutrino/prometheus.git && cd ./prometheus
+```
+
+**2. Download the container image**
+
+Download the latest version `.sif` file (currently v1.0.2) from the [Google Drive folder](https://drive.google.com/drive/folders/1oeI4yX_BjdStaDKzx_IsYURxSnuNY3vn)
+
+:::info
+We use [Boost](https://www.boost.org/) libraries for file structure management. Some systems with older kernels may not be compatible with newer Boost versions. If you encounter compatibility issues, use the `.sif` files with the "old" keyword: `prometheus_old_<VERSION>.sif`.
+:::
+
+**3. Launch a Singularity shell within the container**
+
+```sh
+singularity shell <FILENAME>.sif
+```
+
+Replace `<FILENAME>` with the actual name of your downloaded `.sif` file.
+
+#### Source the Environment File
+
+:::tip
+The remaining setup steps and running the software should all be done within your container shell.
+:::
+
+Before running simulations, you may need to source the environment file to ensure all dependencies load correctly:
+
+```sh
+source /opt/.bashrc
+```
+
+Once this is done, still in your container shell, navigate into the Prometheus directory:
+
+```sh
+cd /home/myuser/prometheus
+```
+
+After that, you should be able to start running simulation scripts.
+
+## Running Simulations
+
+The [examples directory](https://github.com/Harvard-Neutrino/prometheus/tree/ana/update-readme/examples) contains example scripts for running simulations.
+
+As a first-time user, you will need `example_ppc.py` for ice-based simulations and `example_olympus.py` for water-based ones. Other scripts cover more specific use case scenarios.
+
+To execute a script, run:
+
+```sh
+python3 python -m pip <SCRIPT_NAME>.py
+```
+
+Replace `<SCRIPT_NAME>` with the name of your simulation script.
+
+To learn more about how Prometheus scripts work, refer to the API documentation in the [docs directory](https://github.com/Harvard-Neutrino/prometheus/tree/main/docs/prometheus).
+
+## Citation
+
+Please cite Prometheus using this entry:
+
+```bibtex
+@article{Lazar:2023rol,
+    author = {Lazar, Jeffrey and Meighen-Berger, Stephan and Haack, Christian and Kim, David and Giner, Santiago and Arg\"uelles, Carlos A.},
+    title = "{Prometheus: An Open-Source Neutrino Telescope Simulation}",
+    eprint = "2304.14526",
+    archivePrefix = "arXiv",
+    primaryClass = "hep-ex",
+    month = "4",
+    year = "2023"
+}
+```
+
+Please also consider citing the packages that Prometheus uses internally: LeptonInjector, PROPOSAL, PPC, and LeptonWeighter with the following citations:
+
+<details>
+  <summary>LeptonInjector and LeptonWeighter</summary>
+
+  ```bibtex
+  @article{IceCube:2020tcq,
+      author = "Abbasi, R. and others",
+      collaboration = "IceCube",
+      title = "{LeptonInjector and LeptonWeighter: A neutrino event generator and weighter for neutrino observatories}",
+      eprint = "2012.10449",
+      archivePrefix = "arXiv",
+      primaryClass = "physics.comp-ph",
+      doi = "10.1016/j.cpc.2021.108018",
+      journal = "Comput. Phys. Commun.",
+      volume = "266",
+      pages = "108018",
+      year = "2021"
+  }
+  ```
+</details>
+
+<details>
+  <summary>PROPOSAL</summary>
+
+  ```bibtex
+  @article{koehne2013proposal,
+      title     = {PROPOSAL: A tool for propagation of charged leptons},
+      author    = {Koehne, Jan-Hendrik and
+                  Frantzen, Katharina and
+                  Schmitz, Martin and
+                  Fuchs, Tomasz and
+                  Rhode, Wolfgang and
+                  Chirkin, Dmitry and
+                  Tjus, J Becker},
+      journal   = {Computer Physics Communications},
+      volume    = {184},
+      number    = {9},
+      pages     = {2070--2090},
+      year      = {2013},
+      doi       = {10.1016/j.cpc.2013.04.001}
+  }
+  ```
+
+</details>
+
+<details>
+  <summary>PPC</summary>
+
+  ```bibtex
+  @misc{chirkin2022kpl,
+      author = {D. Chirkin},
+      title = {ppc},
+      year = {2022},
+      publisher = {GitHub},
+      journal = {GitHub repository},
+      howpublished = {\url{https://github.com/icecube/ppc}},
+      commit = {30ea4ada13fbcf996c58a3eb3f0b1358be716fc8}
+  }
+
+  ```
+
+</details>
+
+## API Documentation
+
+Detailed API documentation on Prometheus' modules and classes is available in the [docs directory](https://github.com/Harvard-Neutrino/prometheus/tree/main/docs/prometheus).
+
+## Getting Help
+
+If you encounter any issues with installation, setup, or bugs in this software, feel free to open a GitHub issue and we will address it as soon as we can.
+
+If you are completely blocked and we cannot get to your issue in time, or if you have questions or suggestions about the software, please feel free to contact the authors using the email addresses listed on Inspire-HEP.
