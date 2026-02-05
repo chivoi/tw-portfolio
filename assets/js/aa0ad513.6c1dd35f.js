@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktw_portfolio=globalThis.webpackChunktw_portfolio||[]).push([[4297],{746:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/tw-portfolio/guides","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Examples of Guide and How-to writing","blogTitle":"Guides"}}')}}]);
